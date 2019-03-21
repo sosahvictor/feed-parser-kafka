@@ -82,22 +82,30 @@ Will produce 3 different events in Kafka with the following contents
 
 ```{"url": "http://news.illinois.edu/news/15/0821regionalplans_dustinallred_arnabchakraborty.html", "author": "Jodi Heckel, Arts and Humanities Editor", "description": "A land use plan adopted for the Sacramento, California, region aimed to get local governments to plan together for development in a way that discouraged sprawl.", "title": "Local development often at odds with regional land use plans"}```
 
-The Kafka configuration is also in this file. Make sure you point to the correct host, port and topic.
+The Kafka configuration is also in this file. Make sure you point to the correct host, port and topic. See this line
+[https://github.com/sosahvictor/feed-parser-kafka/blob/master/feed-parser-kafka/kafka_producer.py#L7](https://github.com/sosahvictor/feed-parser-kafka/blob/master/feed-parser-kafka/kafka_producer.py#L7)
 ### Important
-In this file, there's also a XML parser that reads the XML files and forms the JSON structure. Currently, this parser accounts for a small set of XML namespaces, if for some reason, the feed file has a different namespace or element name than those specified in this file, the producer will fail. A great improvement would be to have this parsing in a more intelligent way.
+In this file, there's also a XML parser that reads the XML files and forms the JSON structure. Currently, this parser accounts for a small set of XML namespaces, if for some reason, the feed file has a different namespace or element name than those specified in this file, the producer will fail. A great improvement would be to have this parsing in a more intelligent way. See this line.
+[https://github.com/sosahvictor/feed-parser-kafka/blob/master/feed-parser-kafka/kafka_producer.py#L10](https://github.com/sosahvictor/feed-parser-kafka/blob/master/feed-parser-kafka/kafka_producer.py#L10)
 
 # Development and testing
 All python files were created locally. However, I used a docker instance to run Kafka. You can find one here
 [https://hub.docker.com/r/spotify/kafka](https://hub.docker.com/r/spotify/kafka)
+
 To install it run this command
 ```docker pull spotify/kafka```
+
 Once the image is downloaded, run this command to launch the instance:
 ```docker run -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=localhost --env ADVERTISED_PORT=9092 spotify/kafka```
-To test the stream pipelin, you can use the consumer built-in in Kafka. For this, you will need to run a command line inside the instance. To know the instance ID run this command, you will use this ID in the next commands:
+
+To test the stream pipeline, you can use the consumer built-in in Kafka. For this, you will need to run a command line inside the instance. To know the instance ID run this command, you will use this ID in the next commands:
 ```docker ps```
+
 Copy the instance ID from your Kafka image and then run the following
 ```docker exec -it <instance ID>/bin/bash```
+
 Once in the CLI of the Kafka instance, run this command:
 ```/opt/kafka-<version>/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic rss--from-beginning```
+
 Make sure you change ```kafka-<version>``` to the appropriate folder name.
 This will start a process that will receive all events from the very beginning.
