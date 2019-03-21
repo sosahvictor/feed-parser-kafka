@@ -110,7 +110,7 @@ Copy the instance ID from your Kafka image and then run the following
 
 Once in the CLI of the Kafka instance, run this command:
 
-```/opt/kafka-<version>/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic rss--from-beginning```
+```/opt/kafka-<version>/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic rss --from-beginning```
 
 Make sure you change ```kafka-<version>``` to the appropriate folder name.
 This will start a process that will receive all events from the very beginning.

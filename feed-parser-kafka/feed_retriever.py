@@ -8,8 +8,11 @@ def read_rss_file(rss_file_location, output_directory):
 	suffix = now.strftime("_%Y%m%d%H%M%S.xml")
 
 	for rss in rss_file:
-		filename = re.compile("http://|https://").split(rss)[1]
+		rss = rss.strip()
+		if len(rss) <= 1:
+			continue
 
+		filename = re.compile("http://|https://").split(rss)[1]
 		last_dot_index = filename.rfind(".")
 		filename = filename[:last_dot_index]
 		filename = re.sub("\.|\/", "_", filename)
