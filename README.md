@@ -93,18 +93,23 @@ All python files were created locally. However, I used a docker instance to run 
 [https://hub.docker.com/r/spotify/kafka](https://hub.docker.com/r/spotify/kafka)
 
 To install it run this command
+
 ```docker pull spotify/kafka```
 
 Once the image is downloaded, run this command to launch the instance:
+
 ```docker run -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=localhost --env ADVERTISED_PORT=9092 spotify/kafka```
 
 To test the stream pipeline, you can use the consumer built-in in Kafka. For this, you will need to run a command line inside the instance. To know the instance ID run this command, you will use this ID in the next commands:
+
 ```docker ps```
 
 Copy the instance ID from your Kafka image and then run the following
+
 ```docker exec -it <instance ID>/bin/bash```
 
 Once in the CLI of the Kafka instance, run this command:
+
 ```/opt/kafka-<version>/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic rss--from-beginning```
 
 Make sure you change ```kafka-<version>``` to the appropriate folder name.
