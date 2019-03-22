@@ -12,9 +12,13 @@ The whole program is executed by the *main* script. This script takes two input 
 * The output directory where the feed files will be placed temporarily.
 
 Both arguments are required.
+
 ```$ ./main.py <input file> <output directory>```
+
 For instance:
+
 ```$ ./main.py ../input/rss_feeds_url.txt ../../output```
+
 Note that the input supports full and relative paths.
 A sample input file is included here in the *input* directory
 ## Feed retriever
@@ -76,6 +80,7 @@ For instance, having this XML feed:
 </rss>
 ```
 Will produce 3 different events in Kafka with the following contents
+
 ```{"url": "http://news.illinois.edu/news/15/0827tumor_environment_kriskilian.html", "author": "Liz Ahlberg, Physical Sciences Editor", "description": "Tumors are notoriously difficult to study in their natural habitat \u2013 body tissues \u2013 but a new synthetic tissue environment may give cancer researchers the next-best look at tumor growth and behavior.", "title": "New synthetic tumor environments make cancer research more realistic"}```
 
 ```{"url": "http://news.illinois.edu/news/15/0824brain_aganieszkaburzynska.html", "author": "Diana Yates, Life Sciences Editor", "description": "One day soon, doctors may be able to determine how physically active you are simply by imaging your brain. Studies have shown that physically fit people tend to have larger brain volumes and more intact white matter than their less-fit peers. Now a new study reveals that older adults who regularly engage in moderate to vigorous physical activity have more variable brain activity at rest than those who don\u2019t. This variability is associated with better cognitive performance, the researchers say.", "title": "Study links physical activity to greater mental flexibility in older adults"}```
@@ -106,7 +111,7 @@ To test the stream pipeline, you can use the consumer built-in in Kafka. For thi
 
 Copy the instance ID from your Kafka image and then run the following
 
-```docker exec -it <instance ID>/bin/bash```
+```docker exec -it <instance ID> /bin/bash```
 
 Once in the CLI of the Kafka instance, run this command:
 
