@@ -6,6 +6,8 @@ This application is split into 3 components, each in charge of one single task:
 2. Read each file and find differences. If there's any new feed, then the file will be processed next. If not, the file will be droped from the execution.
 3. A Kafka producer that reads each of the diff'ed files and sends an event to a Kafka stream. 
 
+This work is part of CS-498 CCA course at University of Illinois.
+
 ## Main
 The whole program is executed by the *main* script. This script takes two input parameters:
 * The input file with the list of URL to retrieve the feeds.
@@ -119,3 +121,8 @@ Once in the CLI of the Kafka instance, run this command:
 
 Make sure you change ```kafka-<version>``` to the appropriate folder name.
 This will start a process that will receive all events from the very beginning.
+# Authors
+
+* **Francisco Vargas (fav3@illinois.edu)**
+* **Hari Manan (nfnh2@illinois.edu)**
+* **Victor Sosa (victors3@illinois.edu)**
