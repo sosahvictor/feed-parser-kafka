@@ -16,7 +16,9 @@ ns = {
 def process_feed_file(files):
 	# Iterate over each XML file and publish
 	for feed_file in files:
-		parse_xml_feed(feed_file)
+		# Only parse XML files
+		if feed_file.endswith('.xml') is True:
+			parse_xml_feed(feed_file)
 		
 # Parse independent RSS feed XML files and publish the feeds
 def parse_xml_feed(feed_file):
