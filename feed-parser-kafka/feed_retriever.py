@@ -1,6 +1,6 @@
 import re
 import datetime
-import urllib2
+import requests
 
 # Read, download, and store a list of RSS feed URLs
 def read_rss_file(rss_file_location, output_directory):
@@ -35,8 +35,10 @@ def download_rss(url, filename, output_directory):
 	print("Creating local file " + output_directory + filename)
 
 	# Fetch XML from RSS feed URL and save it
-	response = urllib2.urlopen(url)
-	xml_content = response.read()
-	file_output = open(output_directory + filename, "w");
-	file_output.write(xml_content)
+	response = requests.get(url)
+
+	# Only write output if response is a 200
+	if response.status_code is 200:
+		with open(output_directory + filename, 'w') as f:
+			f.write(response.text)
 
