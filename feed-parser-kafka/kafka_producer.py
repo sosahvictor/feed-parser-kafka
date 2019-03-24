@@ -12,6 +12,7 @@ ns = {
 	'atom': 'http://www.w3.org/2005/Atom'
 }
 
+# Parse and publish all feeds from RSS feed XML files list
 def process_feed_file(files):
 	for feed_file in files:
 		parse_xml_feed(feed_file)
