@@ -32,11 +32,11 @@ def read_rss_file(rss_file_location, output_directory):
 # Download, and store a list of RSS feed URLs
 def download_rss(url, filename, output_directory):
 	print("Downloading content from " + url)
-	print("Creating local file " + output_directory + "/" + filename)
+	print("Creating local file " + output_directory + filename)
 
 	# Fetch XML from RSS feed URL and save it
 	response = urllib2.urlopen(url)
 	xml_content = response.read()
-	file_output = open(output_directory + "/" + filename, "w");
+	file_output = open(output_directory + filename, "w");
 	file_output.write(xml_content)
 
